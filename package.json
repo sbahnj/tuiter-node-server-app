@@ -1,5 +1,6 @@
 {
   "name": "tuiter-node-server-app",
+  "type": "module",
   "version": "1.0.0",
   "description": "Node.js HTTP Web server for the Tuiter application",
   "main": "index.js",
@@ -19,4 +20,8 @@
   "dependencies": {
     "express": "^4.18.2"
   }
+
+
+
+
 }

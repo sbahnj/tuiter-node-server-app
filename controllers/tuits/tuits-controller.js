@@ -35,13 +35,14 @@ const deleteTuit = (req, res) => {
 const updateTuit = (req, res) => {
     const tuitdIdToUpdate = req.params.tid;
     const updates = req.body;
-    const tidUpdate = "234";
     const tuitIndex = tuits.findIndex(
-        (t) => t._id === tidUpdate)
+        (t) => t._id.toString() === tuitdIdToUpdate)
     tuits[tuitIndex] =
         {...tuits[tuitIndex], ...updates};
     res.sendStatus(200);
 }
+
+
 
 
 

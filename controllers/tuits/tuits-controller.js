@@ -1,10 +1,8 @@
 import posts from "./tuits.js";
 let tuits = posts;
 
-const createTuit = (req, res) => {}
 
-const updateTuit = (req, res) => {}
-const deleteTuit = (req, res) => {}
+
 
 export default (app) => {
     app.post('/api/tuits', createTuit);
@@ -15,6 +13,35 @@ export default (app) => {
 
 const findTuits = (req, res) =>
     res.json(tuits);
+
+
+
+const createTuit = (req, res) => {
+    const newTuit = req.body;
+    newTuit._id = (new Date()).getTime()+'';
+    newTuit.likes = 0;
+    newTuit.liked = false;
+    tuits.push(newTuit);
+    res.json(newTuit);
+}
+
+const deleteTuit = (req, res) => {
+    const tuitdIdToDelete = req.params.tid;
+    tuits = tuits.filter((t) =>
+        t._id.toString() !== tuitdIdToDelete);
+    res.sendStatus(200);
+}
+
+const updateTuit = (req, res) => {
+    const tuitdIdToUpdate = req.params.tid;
+    const updates = req.body;
+    const tidUpdate = "234";
+    const tuitIndex = tuits.findIndex(
+        (t) => t._id === tidUpdate)
+    tuits[tuitIndex] =
+        {...tuits[tuitIndex], ...updates};
+    res.sendStatus(200);
+}
 
 
 

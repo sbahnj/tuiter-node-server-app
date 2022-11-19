@@ -2,6 +2,12 @@ import express from 'express';
 
 import cors from 'cors'
 
+const app = express()
+
+app.use(cors())
+
+app.use(express.json());
+
 import HelloController
     from "./controllers/hello-controller.js"
 
@@ -13,11 +19,7 @@ import TuitsController
 
 
 
-const app = express()
 
-app.use(cors())
-
-app.use(express.json());
 
 TuitsController(app);
 
